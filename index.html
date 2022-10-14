@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <HEAD>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>THĐ</title>
+      <link rel="shortcut icon" type="image/png" href="/AnyConv.com__272226165_486020873084412_7430407282675553598_n.ico"/>
+      <link rel="stylesheet" href="./style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    </HEAD>
+    <body>
+        <div class="form">
+            <div class="form_1">
+                <div class="form_1_center">
+                    <div id="hvn"></div>
+                </div>
+                <div class="form_1_center">
+                    <h1 style="background-image: rgb(233, 0, 142);
+                    -webkit-background-clip: text;
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    font-size: 30px;
+                    color: rgb(220, 35, 41);
+                    font-family: 'Roboto Slab', serif;">CHÚC MỪNG</h1>
+                </div>
+                <div class="form_1_center">
+                    <h1 style="background-image: linear-gradient(180deg, #d2bdff 22%, #d2bdff 90%);
+                    -webkit-background-clip: text;
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    font-size: 28px;
+                    color: rgb(233, 0, 142);
+                    font-family: 'Roboto Slab', serif;">NGÀY PHỤ NỮ VIỆT NAM</h1>
+                </div>
+                <div class="form_1_center"><h1 style="background-image: linear-gradient(180deg, #d2bdff 22%, #d2bdff 90%);
+                    -webkit-background-clip: text;
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    font-size: 40px;
+                    position: relative;
+                    top: -10px;
+                    color:  rgb(233, 0, 142);
+                    font-family: 'Roboto Slab', serif;">♡ 20/10 ♡</h1></div>
+
+            </div >
+                <div class="bot">   
+                    <div class="form_2_center">
+                        <button class="button" id="Clock"></button>
+                    </div>
+                    <div class="form_2_center">
+                        <button class="button" id="Temp"></button>
+                    </div>
+                    <div class="form_2_center">
+                        <div class="ThanhText" id="ThanhText" style="display:flex ; align-items: center; justify-content: center; ">
+                            <label for="name">Text</label>
+                            <input class="text" id="text" type="text" /></div>
+                        
+                    </div>
+                    <div class="form_2_center">
+                        <button class="button" id="OK"></button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+
+        <script >
+            function dongho(){
+                var today = new Date();
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                document.getElementById("hvn").innerHTML = time;
+                setTimeout("dongho()",1000);
+            }
+            dongho();
+        </script>
+       
+         
+         
+         
+         
+       </div>
+       
+       <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+       <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+       <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+       <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+       <!-- lien ket voi functions.js -->
+       
+       
+       <script>
+         // Your web app's Firebase configuration
+         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+         var firebaseConfig = {
+            apiKey: "AIzaSyBQL_lBWeHWlNXHHg4riZ-DDT6O81zH9ik",
+            authDomain: "mtqlm-a2f13.firebaseapp.com",
+            databaseURL: "https://mtqlm-a2f13-default-rtdb.firebaseio.com",
+            projectId: "mtqlm-a2f13",
+            storageBucket: "mtqlm-a2f13.appspot.com",
+            messagingSenderId: "319100237666",
+            appId: "1:319100237666:web:5f8fca0f957deb8f9b1e3b",
+            measurementId: "G-C5J6M5GMPN"
+         };
+         // Initialize Firebase
+         firebase.initializeApp(firebaseConfig);
+         firebase.analytics();
+         
+         //functions
+         // make sure that the name in ' ' match with name of your database child
+         var Clock = document.getElementById("Clock");
+         var Temp = document.getElementById("Temp");
+         var Ok= document.getElementById("OK");
+         var text = document.getElementById("text");
+         
+         Clock.addEventListener('click', ()=>{
+            
+            firebase.database().ref('Mode/').set({
+            mode:0,
+            state:1,
+            });
+            
+        })
+        Temp.addEventListener('click', ()=>{
+            firebase.database().ref('Mode/').set({
+            mode:1,
+            state:1,
+        });
+        })
+        Ok.addEventListener('click', ()=>{
+            var a=text.value;
+            firebase.database().ref('Mode/').set({
+            mode:2,
+            state:1,
+        });
+        firebase.database().ref('Text/').set({
+            mode:a,
+            
+                });
+        })
+        
+
+ 
+  
+      </script>
+       
+     </body> 
+     
+   
+</HTML> 
