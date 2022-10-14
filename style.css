@@ -315,8 +315,9 @@ label {
 @media all and (min-width: 320px) {
   .form{
   background-size: cover;
-  background-position: -500px ;
+  background-position: 0 ;
   background-image: url(https://files.vfo.vn/2015/T10/img/vforum.vn-233748-flowers-3.jpg);
+  background-size:  auto 580px;
   }
 }
 /* Dành cho máy tính bảng chiều dọc */
